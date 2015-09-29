@@ -6,8 +6,7 @@ $dao = new SimpleDao();
 $res = $dao->get_some();
 
 // debug
-echo '<pre>';
+echo 'Some result: \n';
 var_dump($res);
-echo '</pre>';
 
 ?>
