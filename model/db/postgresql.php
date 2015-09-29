@@ -1,14 +1,18 @@
 <?php
 
-/**
-   This class is developed to be a wrapper to the PDO:postgresql functions
+/* This class is developed to be a wrapper to the PDO functions */
 
- */
+class Database {
 
-class Postgresql {
+  private $dbh;
 
   public function __construct($dsn, $user="", $passwd="") { 
     // TODO
+    try {
+      $this->dbh = new PDO($dsn, $user, $password);
+    } catch (PDOException $e) {
+      die('Connection failed: ' . $e->getMessage());
+    }
   }
 
   public function delete($table, $where, $bind="") { 
@@ -20,7 +24,12 @@ class Postgresql {
   }
 
   public function query($table, $where="", $bind="", $fields="*") { 
-    //TODO
+    //TODO make it work
+    $stmt = $this->dbh->prepare ("SELECT ".$fields." FROM ".$table." WHERE ");
+    $stmt -> bindParam(':id_user', $id_user);
+    $stmt -> execute();
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   public function update($table, $info, $where, $bind="") { 
