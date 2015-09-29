@@ -1,6 +1,5 @@
 <?php
 
-
 class SimpleDao {
 
   // fullfill
@@ -8,8 +7,15 @@ class SimpleDao {
 
   public function get_some() {
     
-    echo 'Some: ';
-    var_dump($CONF);  
+    global $CONF;
+
+    $this->db = new Database($CONF['db']['dsn']);
+    
+    echo 'Some conf: \n';
+    var_dump($CONF);
+
+    echo 'Some db: \n';
+    var_dump($this->db);
 
   }
 
