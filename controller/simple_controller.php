@@ -12,7 +12,7 @@ class SimpleController {
 
   public function get_control_of_some() {
     
-    return $this->dao->get_some()
+    return $this->dao->get_some();
     
   }
 
